@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomePage from "./components/HomePage";
+import TambahBerkas from "./components/TambahBerkas";
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	return (
+		<NavigationContainer>
+			<Stack.Navigator initialRouteName="HomePage">
+				<Stack.Screen
+					name="HomePage"
+					component={HomePage}
+					options={{
+						title: "Home Page",
+						headerStyle: {backgroundColor: "#e81c4c"},
+						headerTintColor: "#fff"
+					}}
+				/>
+        <Stack.Screen
+					name="TambahBerkas"
+					component={TambahBerkas}
+					options={{
+						title: "Tambah Berkas",
+						headerStyle: {backgroundColor: "#e81c4c"},
+						headerTintColor: "#fff"
+					}}
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
